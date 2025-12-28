@@ -15,13 +15,34 @@ def main():
     policy = GradingPolicy()
 
     """
-    # Create the Facade with the configuration
+    # Step 2: We have created a University facade. 
+    # Apply above created configurations which the services listed inside the University facade can use it
+
+    Before implementing the Facade pattern, client needed to interact with multiple services directly like below:
+         admission_service = AdmissionService(settings)
+         finance_service = FinanceService(settings)
+         exam_service = ExamService(policy)
+         result_service = ResultService(policy)
+      Now, with the Facade pattern, client only needs to interact with the Facade itself:
+      university = UniversityFacade(settings=settings, policy=policy)
+
+     Question: How is Facade pattern actually implemented?
+      # Answer: The Facade class (UniversityFacade) encapsulates the complexity of initializing and coordinating
+      multiple services (AdmissionService, FinanceService, ExamService, ResultService).
+      Clients interact with a single Facade object instead of directly managing multiple services.
+
+      Switch to the file university_facade.py to see the implementation of the Facade pattern. 
+      Comment on university_facade.py will help you understand the implementation.
     """
     university = UniversityFacade(settings=settings, policy=policy)
 
     print(f"\n{settings.university_name} - {settings.fiscal_year}")
     print("-" * 60)
-
+    """
+    Step 3 in the main.py file but actually needs to be implemented only after creating your University Facade.
+    After we have created custom methods inside Facade class which invokes individual services, 
+    we can actually use those methods here in main.py
+    """
     # Now client only needs to interact with the Facade, not individual services
     print("\n=== Department Information ===")
     print(university.show_admission_info())
@@ -41,6 +62,12 @@ def main():
     print(f"Finance: {report['finance_info']}")
     print(f"Exam Evaluation: {report['exam_evaluation']}")
     print(f"Final Result: {report['result']}")
+
+   #  print("\n=== Admission and Finance Report (via Facade convenience method) ===")
+   #  report = university.get_admission_finance_report()
+   #  print(f"University: {report['university']}")
+   #  print(f"Admission: {report['admission_info']}")
+   #  print(f"Finance: {report['finance_info']}")
 
 if __name__ == "__main__":
     main()
