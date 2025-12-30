@@ -1,0 +1,2 @@
+*.csv filter=lfs diff=lfs merge=lfs -text
+Data[[:space:]]Mining[[:space:]]Graduate[[:space:]]Project/NYPD_Felony.csv filter=lfs diff=lfs merge=lfs -text
