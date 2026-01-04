@@ -4,16 +4,7 @@ from abc import ABC, abstractmethod
 class GradingStrategy(ABC):
     @abstractmethod
     def calculate_grade(self, marks: float, max_marks: int = 100) -> dict:
-        """
-        Calculate grade based on marks using a specific strategy.
-        
-        Args:
-            marks: Student's obtained marks
-            max_marks: Maximum possible marks
-            
-        Returns:
-            Dictionary with grade information
-        """
+        """Calculate the grade based on marks and return a dictionary of results"""
         pass
 
     @abstractmethod
