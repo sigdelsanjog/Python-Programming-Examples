@@ -1,0 +1,35 @@
+def calculate_gc_content(sequence):
+    gc_count = 0
+
+    for base in sequence:
+        if base == "G" or base == "C":
+            gc_count = gc_count + 1
+
+    return (gc_count / len(sequence)) * 100
+
+
+def calculate_at_content(sequence):
+    at_count = 0
+
+    for base in sequence:
+        if base == "A" or base == "T":
+            at_count = at_count + 1
+
+    return (at_count / len(sequence)) * 100
+
+
+def run_dna_analysis():
+    dna_sequence = "ATGCGCTA"
+
+    gc_content = calculate_gc_content(dna_sequence)
+    at_content = calculate_at_content(dna_sequence)
+
+    print("Procedural DNA Sequence Analysis")
+    print("---------------------------")
+    print(f"DNA Sequence: {dna_sequence}")
+    print(f"GC Content: {gc_content:.2f}%")
+    print(f"AT Content: {at_content:.2f}%")
+
+
+if __name__ == "__main__":
+    run_dna_analysis()
